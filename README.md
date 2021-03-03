@@ -1,4 +1,5 @@
 # ne-sorsam-generator
+https://obsfx.github.io/ne-ogreneyim-generator/
 
 ## Project setup
 ```
