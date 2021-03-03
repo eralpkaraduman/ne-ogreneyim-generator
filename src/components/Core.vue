@@ -76,7 +76,6 @@ export default {
       this.animateSoruyorum = true
     },
     onSoruyorumAnimationEnd() {
-      console.log('asgfdsg')
       this.animateSoruyorum = false
     }
   }
