@@ -1,9 +1,16 @@
 <template>
   <div class="ne-sorayim">
-    <div class="soruyorum">
+    <h1>Ne öğreneyim?</h1>
+    <p>🤔</p>
+    <div 
+      class="soruyorum"
+      v-bind:class="{ 'soruyorum-animated': animateSoruyorum }"
+      v-on:animationend="onSoruyorumAnimationEnd()"
+    >
       <span class="omu-sumu">{{ bunuMu[bunuMuIdx] }}</span>
-      öğreneyim
-      <span class="omu-sumu">{{ sunuMu[sunuMuIdx] }}</span> ?
+      öğreneyim yoksa
+      <span class="omu-sumu">{{ sunuMu[sunuMuIdx] }}</span>
+      öğreneyim?
     </div>
     <div class="generate-btn" v-on:click="random">
       Generate
@@ -21,6 +28,7 @@ export default {
   data: () => ({
     bunuMuIdx: 0,
     sunuMuIdx: 0,
+    animateSoruyorum: true,
 
     bunuMu: [
       'Karbüratör mü',
@@ -65,6 +73,11 @@ export default {
     random() {
       this.bunuMuIdx = Math.floor(Math.random() * this.bunuMu.length);
       this.sunuMuIdx = Math.floor(Math.random() * this.sunuMu.length);
+      this.animateSoruyorum = true
+    },
+    onSoruyorumAnimationEnd() {
+      console.log('asgfdsg')
+      this.animateSoruyorum = false
     }
   }
 }
@@ -99,5 +112,14 @@ export default {
 }
 .generate-btn:hover {
   background-color: #999;
+}
+@keyframes bounce { 
+   0% {transform: scale(0.3); opacity: 0;} 
+   100% {transform: scale(1); opacity: 1;} 
+}
+.soruyorum-animated {
+   animation-name: bounce; 
+   animation-duration: 450ms;
+   animation-timing-function: ease-in-out;
 }
 </style>
